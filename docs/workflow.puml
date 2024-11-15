@@ -1,0 +1,24 @@
+@startuml
+
+participant Client
+participant Server
+
+Client -> Server: Establish TCP connection
+activate Server
+
+Server -> Server: Generate PoW challenge (nonce and conditions)
+Server -> Client: Send PoW challenge (nonce and conditions)
+
+Client -> Client: Solve PoW challenge
+Client -> Server: Send solution
+
+Server -> Server: Verify solution
+alt Solution correct
+    Server -> Client: Send quote
+else Solution incorrect
+    Server ->x Client: Close connection
+end
+
+deactivate Server
+
+@enduml

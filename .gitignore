@@ -1,4 +1,9 @@
-.idea
+.idea/
 bin/
-*.out
 vendor/
+*.mk
+*.out
+*.test
+*.log
+coverage.txt
+coverage.xml
